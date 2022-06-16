@@ -1,7 +1,7 @@
-import { useDispatch } from 'react-redux';
-import { cartActions } from '../../store/cartslices';
-import Card from '../UI/Card';
-import classes from './ProductItem.module.css';
+import { useDispatch } from "react-redux";
+import { cartActions } from "../../store/cartslices";
+import Card from "../UI/Card";
+import classes from "./ProductItem.module.css";
 
 const ProductItem = (props) => {
   const dispatch = useDispatch();
@@ -9,6 +9,14 @@ const ProductItem = (props) => {
   const { title, price, description, id } = props;
 
   const addToCartHandler = () => {
+    // const url = `https://cartredux-5d961-default-rtdb.firebaseio.com/cart.json`;
+    // fetch(url, {
+    //   method: "POST",
+    //   body: JSON.stringify({
+    //     items: cart.items,
+    //     totalQuantity: cart.totalQuantity,
+    //   }),
+    // });
     dispatch(
       cartActions.addItemToCart({
         id,
@@ -26,7 +34,7 @@ const ProductItem = (props) => {
         </header>
         <p>{description}</p>
         <div className={classes.actions}>
-        <button onClick={addToCartHandler}>Add to Cart</button>
+          <button onClick={addToCartHandler}>Add to Cart</button>
         </div>
       </Card>
     </li>
